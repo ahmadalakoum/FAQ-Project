@@ -16,12 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit();
     }
 
-    $user = new User($pdo);
-    $user->setUsername($username);
-    $user->setEmail($email);
-    $user->setPassword($password);
+    // $user = new User($pdo);
+    // $user->setUsername($username);
+    // $user->setEmail($email);
+    // $user->setPassword($password);
+    $user = new UserSkeleton($username, $email, $password);
 
-    $response = $user->createUser();
+    $response = User::createUser($pdo, $username, $email, $password);
 
     if (is_numeric($response)) {
         echo json_encode([

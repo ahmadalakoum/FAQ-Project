@@ -12,44 +12,44 @@ class User extends UserSkeleton
     }
 
     // Function to create a new user
-    public function createUser()
+    public static function createUser($pdo, $username, $email, $password)
     {
         try {
             // Check if email already exists
-            if ($this->userExists()) {
+            if (self::userExists($pdo, $email)) {
                 return "Email already in use.";
             }
-            //check if username set
-            if (empty($this->getUsername()) || empty($this->getEmail()) || empty($this->getPassword())) {
-                return "All fields are required";
+            // Check if all fields are provided
+            if (empty($username) || empty($email) || empty($password)) {
+                return "All fields are required.";
             }
 
 
 
             // Prepare the SQL query
             $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
-            $stmt = $this->pdo->prepare($sql);
+            $stmt = $pdo->prepare($sql);
 
 
             $stmt->execute([
-                ':username' => $this->getUsername(),
-                ':email' => $this->getEmail(),
-                ':password' => password_hash($this->getPassword(), PASSWORD_BCRYPT)
+                ':username' => $username,
+                ':email' => $email,
+                ':password' => password_hash($password, PASSWORD_BCRYPT)
             ]);
 
             // Return the new user's ID
-            return $this->pdo->lastInsertId();
+            return $pdo->lastInsertId();
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }
     }
 
     // Function to check if a user already exists
-    private function userExists()
+    private static function userExists($pdo, $email)
     {
         $sql = "SELECT id FROM users WHERE email = :email";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':email' => $this->getEmail()]);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':email' => $email]);
         return $stmt->fetchColumn() ? true : false;
     }
 
@@ -70,10 +70,10 @@ class User extends UserSkeleton
     }
 
     //function to login a user
-    public function loginUser($email, $password)
+    public static function loginUser($pdo, $email, $password)
     {
         $sql = "SELECT id,username,password FROM users WHERE email=:email";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
