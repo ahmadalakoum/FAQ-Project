@@ -16,7 +16,7 @@ document.getElementById("registerForm").addEventListener("submit",async (e)=>{
         password
     });
     if(response.data.status ==="success"){
-        window.location.href="home.html";
+        window.location.href="./index.html";
     }else{
         message.textContent=response.data.message;
     }
