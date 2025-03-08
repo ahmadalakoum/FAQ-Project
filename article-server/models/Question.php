@@ -50,7 +50,7 @@ class Question extends QuestionSkeleton
     public function searchQuestion($searchTerm)
     {
         try {
-            $sql = "SELECT * FROM questions WHERE question LIKE :searchTerm";
+            $sql = "SELECT * FROM questions WHERE question LIKE :searchTerm OR answer LIKE :searchTerm";
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->execute([':searchTerm' => "%" . $searchTerm . "%"]);
