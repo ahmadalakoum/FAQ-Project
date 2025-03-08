@@ -17,6 +17,7 @@ document.getElementById("loginForm").addEventListener("submit",async (e)=>{
 
     if(response.data.status ==="success"){
         localStorage.setItem("userID",response.data.id);
+        localStorage.setItem("username",response.data.username);
         window.location.href="home.html";
     }else{
         message.textContent=response.data.message;
