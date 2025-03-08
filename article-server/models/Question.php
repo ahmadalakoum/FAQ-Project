@@ -27,7 +27,7 @@ class Question extends QuestionSkeleton
         try {
             // Check if the user has provided valid question and answer
             if (!$this->getQuestion() || !$this->getAnswer()) {
-                return "Error: Both question and answer are required.";
+                return "Both question and answer are required.";
             }
 
 
