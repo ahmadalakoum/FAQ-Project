@@ -1,4 +1,5 @@
 <?php
+require "./cors.php";
 require "../../connection/connection.php";
 require "../../models/Question.php";
 require "./getBearer.php";
