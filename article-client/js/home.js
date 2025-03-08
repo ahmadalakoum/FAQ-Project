@@ -50,10 +50,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     answerEl.classList.add("answer");
                     answerEl.textContent = q.answer;
 
+                    const user = document.createElement("p");
+                    user.classList.add('username')
+                    user.textContent= `Posted By: ${q.username}`;
+
                     const card = document.createElement("div");
                     card.classList.add("question-card");
                     card.appendChild(questionEl);
                     card.appendChild(answerEl);
+                    card.appendChild(user);
                     questionsContainer.appendChild(card);
                 });
             }

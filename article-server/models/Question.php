@@ -15,7 +15,7 @@ class Question extends QuestionSkeleton
     //function to get all questions
     public function getAllQuestions()
     {
-        $sql = "SELECT * FROM questions";
+        $sql = "SELECT *,u.username FROM questions q JOIN users u ON u.id =q.user_id ";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
