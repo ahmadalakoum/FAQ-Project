@@ -15,11 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit();
     }
 
-    $user = new User($pdo);
-    $user->setEmail($email);
-    $user->setPassword($password);
+    $user = new UserSkeleton($username, $email, $password);
 
-    $response = $user->loginUser($email, $password);
+    $response = User::loginUser($pdo, $email, $password);
 
     if ($response) {
         echo json_encode([
