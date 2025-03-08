@@ -1,6 +1,6 @@
 <?php
-require_once "../connection/connection.php";
-require_once "./UserSkeleton.php";
+require_once __DIR__ . "/../connection/connection.php";
+require_once __DIR__ . "/UserSkeleton.php";
 
 class User extends UserSkeleton
 {
@@ -17,8 +17,13 @@ class User extends UserSkeleton
         try {
             // Check if email already exists
             if ($this->userExists()) {
-                return "Error: Email already in use.";
+                return "Email already in use.";
             }
+            //check if username set
+            if (empty($this->getUsername()) || empty($this->getEmail()) || empty($this->getPassword())) {
+                return "All fields are required";
+            }
+
 
 
             // Prepare the SQL query
@@ -69,7 +74,7 @@ class User extends UserSkeleton
     {
         $sql = "SELECT id,username,password FROM users WHERE email=:email";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':email', $email]);
+        $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
