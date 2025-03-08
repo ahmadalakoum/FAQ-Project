@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const logoutBtn=document.getElementById("logoutBtn");
     usernameValue.innerHTML=`Welcome, ${username}`;
 
+    const addQuestionBtn = document.getElementById("addQuestionBtn");
+
     if(!userID){
         window.location.href='./index.html';
     }
@@ -14,7 +16,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.removeItem("userID");
         localStorage.removeItem("username");
         window.location.href='./index.html';
-    })
+    });
+    addQuestionBtn.addEventListener('click', () => {
+        window.location.href = "add-question.html"; 
+    });
 
     
 

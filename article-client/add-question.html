@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add question</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body style="display:flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div class="form-container">
+        <h2>Add question/answer</h2>
+        <form id="form">
+            <input type="text" id="question" placeholder="question" required>
+            <input type="text" id="answer" placeholder="answer" required>
+            <button type="submit">Add</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/addQuestion.js"></script>
+</body>
+</html>
