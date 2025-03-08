@@ -1,6 +1,6 @@
 <?php
-require_once "../connection/connection.php";
-require_once "./QuestionSkeleton.php";
+require_once __DIR__ . "/../connection/connection.php";
+require_once __DIR__ . "/QuestionSkeleton.php";
 
 
 class Question extends QuestionSkeleton
