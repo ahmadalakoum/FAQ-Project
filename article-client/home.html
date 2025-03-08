@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Q&A App</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <div class="main-content">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <h1 class="logo">Q&A App</h1>
+            <div class="user-info">
+                <span id="username">Welcome, Guest</span> | 
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search questions...">
+                <button id="addQuestionBtn" class="add-question-btn">+</button> <!-- + button -->
+            </div>
+        </nav>
+
+        <!-- Questions Container -->
+        <div class="container" id="questionsContainer">
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>
