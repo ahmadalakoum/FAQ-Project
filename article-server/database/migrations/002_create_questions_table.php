@@ -7,7 +7,7 @@ class CreateQuestionsTable
         $sql = "CREATE TABLE IF NOT EXISTS questions (
         id INT AUTO_INCREMENT PRIMARY KEY,
         question VARCHAR(255) NOT NULL,
-        answer VARCHAR(255) NOT NULL,
+        answer TEXT NOT NULL,
         user_id INT,
         FOREIGN KEY (user_id) REFERENCES users(id)
         )";
