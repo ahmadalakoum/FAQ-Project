@@ -1,5 +1,6 @@
 <?php
 
+// connection file
 $host = "alakoumahmad.zapto.org";
 $username = "root";
 $pass = "password";
