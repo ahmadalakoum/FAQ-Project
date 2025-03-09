@@ -1,7 +1,7 @@
 <?php
 
 // connection file
-$host = "alakoumahmad.zapto.org";
+$host = "localhost";
 $username = "root";
 $pass = "password";
 $db_name = "faq";
