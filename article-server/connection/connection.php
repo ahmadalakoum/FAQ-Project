@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost";
+$host = "alakoumahmad.zapto.org";
 $username = "root";
 $pass = "password";
 $db_name = "faq";
